@@ -44,7 +44,7 @@ class Implepricerange extends State<Pricerange>{
                ),
 
                 SizedBox(
-                  height: 10,
+                  height: 50.0, 
                 ),
                 Container(
                   height: 300,
@@ -54,7 +54,7 @@ class Implepricerange extends State<Pricerange>{
                     borderRadius: BorderRadius.circular(10)
                   ),
                   child: Stack(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter, //for to center getavator
                     children: [
                         getcards(),
                       getavator()
@@ -80,8 +80,9 @@ class Implepricerange extends State<Pricerange>{
  //create containe method
  Container getcards() {
     return Container(
-      width: 250,
+      width: 300,
       height: 250,
+      margin: EdgeInsets.all(40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -104,9 +105,10 @@ Container getavator(){
    return Container(
       width: 100,
      height: 100,
+   
     decoration: BoxDecoration(
       color:Colors.deepOrange,
-      borderRadius: BorderRadius.all(Radius.circular(10)),
+      borderRadius: BorderRadius.all(Radius.circular(50)),
       border: Border.all(color: Colors.white,width: 1.2),
       image: DecorationImage(image: NetworkImage("https://picsum.photos/300/300"), //to online image
       fit: BoxFit.cover)
