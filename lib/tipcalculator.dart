@@ -10,6 +10,7 @@ class Tipcalculator extends StatefulWidget{
 class ExtendTipcalculator extends State<Tipcalculator>{
   double billamount=0.0;
   int minimunpereson=1;
+  int tipcercentage=1;
 
   @override
   Widget build(BuildContext context) {
@@ -137,11 +138,24 @@ class ExtendTipcalculator extends State<Tipcalculator>{
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Tip"),
-                        Text("\$34")
+                        Text("\$34",style:TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.purple) ,)
 
                       ],
                     ),
-                  )
+                  ),
+                  Text("${tipcercentage}%",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.purple),),
+                  Slider(
+                    min: 1,
+                      max: 100,
+                      divisions: 10,
+                      activeColor: Colors.purple,
+                      inactiveColor: Colors.grey,
+
+                      value: tipcercentage.toDouble(), onChanged: (double value){
+                      setState(() {
+                        tipcercentage=value.round();
+                      });
+                  })
                 ],
 
               ),
