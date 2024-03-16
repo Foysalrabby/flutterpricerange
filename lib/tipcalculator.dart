@@ -122,10 +122,28 @@ class ExtendTipcalculator extends State<Tipcalculator>{
                            )
                          ],
                         )
+
+                        
+                      ],
+                    ),
+                    
+                  ),
+
+                  //FOR TIP
+                  Container(
+                    width: 300,
+                    margin: EdgeInsets.only(top: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Tip"),
+                        Text("\$34")
+
                       ],
                     ),
                   )
                 ],
+
               ),
 
             )
