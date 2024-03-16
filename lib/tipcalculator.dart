@@ -9,6 +9,8 @@ class Tipcalculator extends StatefulWidget{
 }
 class ExtendTipcalculator extends State<Tipcalculator>{
   double billamount=0.0;
+  int minimunpereson=1;
+
   @override
   Widget build(BuildContext context) {
 
@@ -69,9 +71,63 @@ class ExtendTipcalculator extends State<Tipcalculator>{
                     }
 
                     },
-                )
+                ),
+                  Container(
+                    width: 300,
+                    margin: EdgeInsets.only(top: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Split"),
+                        Row(
+                         children: [
+                           InkWell(
+                             onTap: (){
+                               setState(() {
+                                 if(minimunpereson >1){
+                                   minimunpereson --;
+                                 }else{
+                                 }
+                               });
+                             },
+                             child: Container(
+                               width: 40,
+                               height: 40,
+                               margin: EdgeInsets.all(7),
+                               decoration: BoxDecoration(
+                                 color: Color.fromARGB(255, 138, 165, 152),
+                                 borderRadius: BorderRadius.circular(7)
+                               ),
+                               child: Center(child: Text("-",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w400,color: Colors.white),)),
+                             ),
+                           ),
+                           Text("$minimunpereson",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.black),),
+                           InkWell(
+                             onTap: (){
+                               setState(() {
+                                 minimunpereson ++;
+                               });
+                             },
+                             child: Container(
+                               width: 40,
+                               height: 40,
+                               margin: EdgeInsets.all(7),
+                               decoration: BoxDecoration(
+                                 borderRadius: BorderRadius.circular(7),
+                                 color: Color.fromARGB(255, 138, 165, 152),
+
+                               ),
+                               child: Center(child: Text("+",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.white),)),
+                             ),
+                           )
+                         ],
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
+
             )
 
           ],
