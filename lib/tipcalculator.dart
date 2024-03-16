@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,8 +8,10 @@ class Tipcalculator extends StatefulWidget{
   State<StatefulWidget> createState() => ExtendTipcalculator();
 }
 class ExtendTipcalculator extends State<Tipcalculator>{
+  double billamount=0.0;
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("TipCalulator range"),
@@ -26,7 +30,7 @@ class ExtendTipcalculator extends State<Tipcalculator>{
                height: 160,
                decoration: BoxDecoration(
                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                 color: Colors.purpleAccent.shade100,
+                 color:   Color.fromARGB(255, 214, 183, 216),
                ),
                child: Column(
                  mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +40,40 @@ class ExtendTipcalculator extends State<Tipcalculator>{
                  ],
                ),
              ),
-            
+            Container(
+              width: 300,
+              margin: EdgeInsets.only(top: 20.0),
+              padding: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color.fromARGB(255, 151, 149, 148),
+                  style: BorderStyle.solid
+                ),
+                borderRadius: BorderRadius.circular(20)
+              ),
+
+              child: Column(
+
+                children: [
+                TextField(
+                  keyboardType:TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(
+                    hintText: "Bill Amount",
+                    prefix: Icon(Icons.money_off_csred,color: Colors.grey, size: 20,)
+                  ),
+                    onChanged: (String value){
+                    try{
+                          billamount=double.parse(value); //to take input fielad value to double store billamount
+                    }catch(error){
+                       billamount =0.0;
+                    }
+
+                    },
+                )
+                ],
+              ),
+            )
+
           ],
         ),
       ),
