@@ -38,8 +38,8 @@ class ExtendTipcalculator extends State<Tipcalculator>{
                child: Column(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   Text("Total person", style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.w700),),
-                   Text("\$123",style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.w700),)
+                   Text("Total Tipperperson", style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.w700),),
+                   Text("\$ ${Calculateperperson(billamount,minimunpereson,tipcercentage)}",style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.w700),)
                  ],
                ),
              ),
@@ -166,6 +166,15 @@ class ExtendTipcalculator extends State<Tipcalculator>{
         ),
       ),
     );
+
+  }
+  //total tip per person
+
+  Calculateperperson( double billamount, int splitby,int tipercentage){
+    double totalperpersonbill=(Calculatetip(billamount, splitby, tipercentage)+billamount)/splitby;
+    return totalperpersonbill;
+
+
 
   }
   //call the method for tip
