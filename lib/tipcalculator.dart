@@ -138,7 +138,7 @@ class ExtendTipcalculator extends State<Tipcalculator>{
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Tip"),
-                        Text("\$34",style:TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.purple) ,)
+                        Text("\$ ${Calculatetip (billamount,minimunpereson,tipcercentage)}",style:TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.purple) ,)
 
                       ],
                     ),
@@ -166,6 +166,18 @@ class ExtendTipcalculator extends State<Tipcalculator>{
         ),
       ),
     );
+
+  }
+  //call the method for tip
+  Calculatetip (double billamount,int splitby,int tipercentage){
+    double totaltip=0.0;
+    if(billamount < 0 || billamount.toString().isEmpty || billamount == null){
+      //not go
+    }
+    else{
+      totaltip=(billamount*tipercentage)/100;
+    }
+   return totaltip;
 
   }
 
