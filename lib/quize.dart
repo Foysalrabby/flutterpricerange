@@ -60,6 +60,8 @@ class Extendedquize extends State<Quizeapp>{
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  ElevatedButton(onPressed: ()=> prequestuion(),
+                      child: Icon(Icons.arrow_back)),
                  ElevatedButton(onPressed: ()=> checkanser(true),
                      child: Text("True")
                  ),
@@ -67,7 +69,8 @@ class Extendedquize extends State<Quizeapp>{
 
                       child: Text("False")),
                   ElevatedButton(onPressed: ()=> nextquestuion(),
-                      child: Icon(Icons.arrow_forward))
+                      child: Icon(Icons.arrow_forward)),
+
                 ],
               ),
               Spacer(), //to remove space in top
@@ -88,22 +91,37 @@ class Extendedquize extends State<Quizeapp>{
          content: Text("corrected")
      );
         ScaffoldMessenger.of(context).showSnackBar(scankbar);
+     updataquestion();
     }
     else{
+
       final scankbar= SnackBar(
         backgroundColor: Colors.redAccent,
         duration: Duration(microseconds: 2000),
         content: Text("Incorrected"),
+
       );
       ScaffoldMessenger.of(context).showSnackBar(scankbar);
+      updataquestion();
     }
 
   });
   }
 
+  // to go automitically go after click
+   updataquestion(){
+     setState(() {
+       currentindex ++;
+     });
+   }
+
   nextquestuion() {
+    updataquestion();
+  }
+
+  prequestuion() {
     setState(() {
-      currentindex ++;
+      currentindex --;
     });
   }
 
