@@ -13,6 +13,7 @@ class Quizeapp extends StatefulWidget{
 }
 class Extendedquize extends State<Quizeapp>{
    int currentindex=0;
+   int count=0;
   List quizebank=[
     questiones.name("The capital of Bangladesh is Dhaka",true),
     questiones.name("The national flower of Bangladesh is the rose.",false),
@@ -73,6 +74,8 @@ class Extendedquize extends State<Quizeapp>{
 
                 ],
               ),
+              ElevatedButton(onPressed: () =>showresult(),
+                  child: Text("Show Result")),
               Spacer(), //to remove space in top
             ],
           ),
@@ -85,6 +88,7 @@ class Extendedquize extends State<Quizeapp>{
   checkanser(bool userchoice) {
   setState(() {
     if( userchoice == quizebank[currentindex].iscorrect){
+      count ++;
      final scankbar= SnackBar(
        backgroundColor: Colors.green,
          duration: Duration(microseconds: 2000),
@@ -94,7 +98,7 @@ class Extendedquize extends State<Quizeapp>{
      updataquestion();
     }
     else{
-
+      count --;
       final scankbar= SnackBar(
         backgroundColor: Colors.redAccent,
         duration: Duration(microseconds: 2000),
@@ -122,6 +126,17 @@ class Extendedquize extends State<Quizeapp>{
   prequestuion() {
     setState(() {
       currentindex --;
+    });
+  }
+
+  showresult() {
+    setState(() {
+      final scankbar= SnackBar(
+          backgroundColor: Colors.green,
+          duration: Duration(microseconds: 2000),
+          content: Text("${count}")
+      );
+      ScaffoldMessenger.of(context).showSnackBar(scankbar);
     });
   }
 
