@@ -61,8 +61,10 @@ class Extendedquize extends State<Quizeapp>{
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                  ElevatedButton(onPressed: ()=> checkanser(true),
-                     child: Text("True")),
+                     child: Text("True")
+                 ),
                   ElevatedButton(onPressed: ()=> checkanser(false),
+
                       child: Text("False")),
                   ElevatedButton(onPressed: ()=> nextquestuion(),
                       child: Icon(Icons.arrow_forward))
@@ -80,10 +82,20 @@ class Extendedquize extends State<Quizeapp>{
   checkanser(bool userchoice) {
   setState(() {
     if( userchoice == quizebank[currentindex].iscorrect){
-      debugPrint("corrected");
+     final scankbar= SnackBar(
+       backgroundColor: Colors.green,
+         duration: Duration(microseconds: 2000),
+         content: Text("corrected")
+     );
+        ScaffoldMessenger.of(context).showSnackBar(scankbar);
     }
     else{
-      debugPrint("incorrected");
+      final scankbar= SnackBar(
+        backgroundColor: Colors.redAccent,
+        duration: Duration(microseconds: 2000),
+        content: Text("Incorrected"),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(scankbar);
     }
 
   });
