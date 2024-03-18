@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterpricerange/model/questionbank.dart';
 
 class Quizeapp extends StatefulWidget{
   @override
@@ -11,16 +12,17 @@ class Quizeapp extends StatefulWidget{
 
 }
 class Extendedquize extends State<Quizeapp>{
-
+   int currentindex=0;
   List quizebank=[
-    "The capital of Bangladesh is Dhaka",
-    "The national flower of Bangladesh is the rose.",
-    "The Sundarbans, located in Bangladesh, is the largest mangrove forest in the world",
-    "Bengali (Bangla) is the only official language of Bangladesh",
-    "Bangladesh shares its longest border with  mayenmar",
-    "The traditional musical instrument tabla is commonly used in Bangladeshi music",
-    "Bangladesh was formerly known as East Pakistan before gaining independence",
-    "The official religion of Bangladesh is Hinduism"
+    questiones.name("The capital of Bangladesh is Dhaka",true),
+    questiones.name("The national flower of Bangladesh is the rose.",false),
+    questiones.name("The Sundarbans, located in Bangladesh, is the largest mangrove forest in the world",true),
+    questiones.name("Bengali (Bangla) is the only official language of Bangladesh",true),
+    questiones.name("Bangladesh shares its longest border with  mayenmar",false),
+    questiones.name("The traditional musical instrument tabla is commonly used in Bangladeshi music",true),
+    questiones.name("Bangladesh was formerly known as East Pakistan before gaining independenc",true),
+    questiones.name("The official religion of Bangladesh is Hinduism",false),
+
   ];
   @override
   Widget build(BuildContext context) {
@@ -33,15 +35,38 @@ class Extendedquize extends State<Quizeapp>{
        width:double.infinity ,
         color:Color.fromARGB(255, 53, 108, 107) ,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: [
                Image.asset("assets/images/hockeypic.jpg"),
               SizedBox(height: 10,),
-              Container(
-                child: Text("${quizebank[4]}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300,fontSize: 20),),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.white,style: BorderStyle.solid
+                    ),
+                    borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(14.0),
+                    child: Text("${quizebank[currentindex%quizebank.length].questuion}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300,fontSize: 20),),
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                 ElevatedButton(onPressed: ()=> checkanser(true),
+                     child: Text("True")),
+                  ElevatedButton(onPressed: ()=> checkanser(false),
+                      child: Text("False")),
+                  ElevatedButton(onPressed: ()=> nextquestuion(),
+                      child: Icon(Icons.arrow_forward))
+                ],
               ),
               Spacer(), //to remove space in top
             ],
@@ -50,6 +75,24 @@ class Extendedquize extends State<Quizeapp>{
       ),
     );
 
+  }
+
+  checkanser(bool userchoice) {
+  setState(() {
+    if( userchoice == quizebank[currentindex].iscorrect){
+      debugPrint("corrected");
+    }
+    else{
+      debugPrint("incorrected");
+    }
+
+  });
+  }
+
+  nextquestuion() {
+    setState(() {
+      currentindex ++;
+    });
   }
 
 }
