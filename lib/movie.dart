@@ -39,7 +39,7 @@ class ExtendMovieclss extends State<Movieclass>{
                        child: Text("H"),
                      ),
                      title: Text("${moviename.elementAt(index)}"),
-                     onTap: () => listmethod(),
+                     onTap: () => listmethod(index),
 
                    ),
               );
@@ -50,9 +50,9 @@ class ExtendMovieclss extends State<Movieclass>{
 
   }
 
-  listmethod() {
+   listmethod(int index) {
     setState(() {
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Moviedetails()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Moviedetails(moviename: "${moviename.elementAt(index)}")));
     });
   }
 
