@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterpricerange/moviedetails.dart';
 
 class Movieclass extends StatefulWidget{
   @override
@@ -38,6 +39,8 @@ class ExtendMovieclss extends State<Movieclass>{
                        child: Text("H"),
                      ),
                      title: Text("${moviename.elementAt(index)}"),
+                     onTap: () => listmethod(),
+
                    ),
               );
             }
@@ -45,6 +48,12 @@ class ExtendMovieclss extends State<Movieclass>{
       ),
     );
 
+  }
+
+  listmethod() {
+    setState(() {
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Moviedetails()));
+    });
   }
 
 }
