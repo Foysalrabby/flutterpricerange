@@ -61,11 +61,12 @@ class Moviethumbail extends StatelessWidget{
         ),
         Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [Colors.white,Colors.white70],
+            gradient: LinearGradient(colors: [Colors.amberAccent,Colors.white70],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter
             )
           ),
+          height: 30,
         )
       ],
 
