@@ -23,14 +23,45 @@ class Extendmoviedetails extends State<Moviedetails>{
       title: Text("Details Page"),
       backgroundColor: Colors.amberAccent,
     ),
-    body: Center(
-      child: Container(
-         child: ElevatedButton(onPressed: (){
+    body:ListView(
+      children: [
+           Moviethumbail("${moviedes.Images[0]}")
+      ],
+    )
 
-         },child: Text("go BACK ${moviedes.Director}"),)
-      ),
-    ),
   );
+  }
+
+}
+
+class Moviethumbail extends StatelessWidget{
+  final String thumbailimg;
+  Moviethumbail(this.thumbailimg);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        Stack(
+          alignment: Alignment.center,
+          children: [
+             Container(
+                width: MediaQuery.of(context).size.width,
+               height: 120.0,
+               decoration: BoxDecoration(
+                 image: DecorationImage(
+                   image: NetworkImage(thumbailimg ?? "https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F0c%2FHSTU_Logo.png&tbnid=n3ZD6a9w20ippM&vet=12ahUKEwif4sjC55KFAxVGxjgGHeOJBnsQMygAegQIARBF..i&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHajee_Mohammad_Danesh_Science_%2526_Technology_University&docid=8kXougSNtRSqZM&w=280&h=356&q=hstu%20saad&ved=2ahUKEwif4sjC55KFAxVGxjgGHeOJBnsQMygAegQIARBF"),
+                   fit: BoxFit.cover
+                 )
+               ),
+             ),
+            Icon(Icons.play_circle_fill, size: 40, color: Colors.white,)
+          ],
+        )
+      ],
+
+    );
   }
 
 }
