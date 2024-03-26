@@ -39,7 +39,19 @@ class ExtendMovieclss extends State<Movieclass>{
               return  Card(
                    child: ListTile(
                      leading: CircleAvatar(
-                       child: Text("H"),
+                       child: Container(
+                          width: 200,
+                         height: 200,
+                         decoration: BoxDecoration(
+                             image: DecorationImage(
+                                   image: NetworkImage("${movielist[index].Images[0]}"),
+                                       fit: BoxFit.cover
+                             ),
+                             borderRadius: BorderRadius.circular(20)
+                         ),
+
+
+                       ),
                      ),
                      title: Text("${movielist[index].Title}"),
                      onTap: () => listmethod(index),
