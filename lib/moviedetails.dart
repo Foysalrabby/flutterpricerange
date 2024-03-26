@@ -58,6 +58,14 @@ class Moviethumbail extends StatelessWidget{
              ),
             Icon(Icons.play_circle_fill, size: 40, color: Colors.white,)
           ],
+        ),
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Colors.white,Colors.white70],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter
+            )
+          ),
         )
       ],
 
