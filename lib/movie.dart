@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterpricerange/model/moviedes.dart';
 import 'package:flutterpricerange/moviedetails.dart';
 
 class Movieclass extends StatefulWidget{
@@ -10,6 +11,8 @@ class Movieclass extends StatefulWidget{
 
 }
 class ExtendMovieclss extends State<Movieclass>{
+
+   final List<Moviedes> movielist= Moviedes.getmovies();
   List moviename=[
     " A Space Odyssey hero",
     "The Godfather",
@@ -31,14 +34,14 @@ class ExtendMovieclss extends State<Movieclass>{
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
-          itemCount: moviename.length,
+          itemCount: movielist.length,
             itemBuilder: (BuildContext context,int index){
               return  Card(
                    child: ListTile(
                      leading: CircleAvatar(
                        child: Text("H"),
                      ),
-                     title: Text("${moviename.elementAt(index)}"),
+                     title: Text("${movielist[index].Title}"),
                      onTap: () => listmethod(index),
 
                    ),
@@ -52,7 +55,7 @@ class ExtendMovieclss extends State<Movieclass>{
 
    listmethod(int index) {
     setState(() {
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Moviedetails(moviename: "${moviename.elementAt(index)}")));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Moviedetails(moviename: "${movielist.elementAt(index).Title}")));
     });
   }
 
