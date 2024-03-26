@@ -1,16 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterpricerange/model/moviedes.dart';
 
 class Moviedetails extends StatefulWidget{
   final String moviename;
-  const Moviedetails({super.key, required this.moviename});
+  final  Moviedes moviedes;
+
+  const Moviedetails({super.key, required this.moviename,required this.moviedes});
   @override
-  State<StatefulWidget> createState() => Extendmoviedetails( this.moviename);
+  State<StatefulWidget> createState() => Extendmoviedetails( this.moviename,this.moviedes);
 
 }
 class Extendmoviedetails extends State<Moviedetails>{
   final String name;
-  Extendmoviedetails(this.name);
+  final Moviedes moviedes;
+  Extendmoviedetails(this.name,this.moviedes);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class Extendmoviedetails extends State<Moviedetails>{
       child: Container(
          child: ElevatedButton(onPressed: (){
 
-         },child: Text("go BACK ${name}"),)
+         },child: Text("go BACK ${moviedes.Director}"),)
       ),
     ),
   );
