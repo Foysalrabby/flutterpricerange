@@ -25,7 +25,8 @@ class Extendmoviedetails extends State<Moviedetails>{
     ),
     body:ListView(
       children: [
-           Moviethumbail("${moviedes.Images[0]}")
+           Moviethumbail("${moviedes.Images[0]}"),
+        MovieDetailsheaderposter(moviedes: moviedes,)
       ],
     )
 
@@ -71,6 +72,58 @@ class Moviethumbail extends StatelessWidget{
       ],
 
     );
+  }
+
+}
+
+
+//for image niche extra info
+ class MovieDetailsheaderposter extends StatelessWidget{
+  final Moviedes moviedes;
+
+  const MovieDetailsheaderposter({super.key, required this.moviedes});
+
+
+
+  @override
+  Widget build(BuildContext context) {
+   return  Padding(
+       padding: EdgeInsets.all(15.0),
+      child: Row(
+        children: [
+          Headerposter(movieposter: moviedes.Images[0].toString(),)
+        ],
+      ),
+   );
+  }
+
+ }
+
+
+
+class Headerposter extends StatelessWidget{
+
+   final String movieposter;
+
+  const Headerposter({super.key, required this.movieposter});
+
+  @override
+  Widget build(BuildContext context) {
+         return Card(
+             child: ClipRRect(
+               borderRadius: BorderRadius.all(Radius.circular(12)),
+               child: Container(
+                 width: MediaQuery.of(context).size.width /4,
+                 height: 130.0,
+                 decoration: BoxDecoration(
+                   image: DecorationImage(
+                     image:NetworkImage(movieposter),
+                     fit: BoxFit.cover
+                   )
+                 ),
+               ),
+             ),
+         );
   }
 
 }
