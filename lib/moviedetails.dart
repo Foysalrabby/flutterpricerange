@@ -148,7 +148,19 @@ class LeftHeaderposter extends StatelessWidget{
             style: TextStyle(
               color: Colors.blue,
             ),
-          )
+          ),
+         RichText(
+           text: TextSpan(
+             style: TextStyle(
+               color: Colors.grey, fontSize: 13.0
+             ),
+             children:  <TextSpan>[
+               TextSpan(text: "${moviedes.Plot}"),
+               TextSpan(text: "More ..",style: TextStyle(color: Colors.indigo))
+             ]
+           ),
+         )
+
 
       ],
     );
