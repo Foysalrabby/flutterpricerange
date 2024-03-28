@@ -83,15 +83,15 @@ class Moviethumbail extends StatelessWidget{
 
   const MovieDetailsheaderposter({super.key, required this.moviedes});
 
-
-
   @override
   Widget build(BuildContext context) {
    return  Padding(
        padding: EdgeInsets.all(15.0),
       child: Row(
         children: [
-          Headerposter(movieposter: moviedes.Images[0].toString(),)
+          Headerposter(movieposter: moviedes.Images[0].toString(),),
+          SizedBox(width: 10.0,),
+          LeftHeaderposter(moviedes: moviedes,)
         ],
       ),
    );
@@ -124,6 +124,32 @@ class Headerposter extends StatelessWidget{
                ),
              ),
          );
+  }
+
+}
+
+//LeftHeaderposter
+
+class LeftHeaderposter extends StatelessWidget{
+   final Moviedes moviedes;
+
+  const LeftHeaderposter({super.key, required this.moviedes});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Flexible(
+          child: Text(
+            "${moviedes.Year} .${moviedes.Genre}".toUpperCase(),
+            style: TextStyle(
+              color: Colors.blue,
+            ),
+          ),
+        ),
+      ],
+    );
+
   }
 
 }
