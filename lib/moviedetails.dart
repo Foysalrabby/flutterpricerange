@@ -87,16 +87,16 @@ class Moviethumbail extends StatelessWidget{
   Widget build(BuildContext context) {
    return  Padding(
        padding: EdgeInsets.all(15.0),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
+
         child: Row(
           children: [
             Headerposter(movieposter: moviedes.Images[0].toString(),),
             SizedBox(width: 10.0,),
-            LeftHeaderposter(moviedes: moviedes,)
+            Expanded(child:LeftHeaderposter(moviedes: moviedes,))
+
           ],
         ),
-      ),
+
    );
   }
 
