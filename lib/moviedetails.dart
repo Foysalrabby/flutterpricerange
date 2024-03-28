@@ -87,12 +87,15 @@ class Moviethumbail extends StatelessWidget{
   Widget build(BuildContext context) {
    return  Padding(
        padding: EdgeInsets.all(15.0),
-      child: Row(
-        children: [
-          Headerposter(movieposter: moviedes.Images[0].toString(),),
-          SizedBox(width: 10.0,),
-          LeftHeaderposter(moviedes: moviedes,)
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Headerposter(movieposter: moviedes.Images[0].toString(),),
+            SizedBox(width: 10.0,),
+            LeftHeaderposter(moviedes: moviedes,)
+          ],
+        ),
       ),
    );
   }
@@ -139,14 +142,14 @@ class LeftHeaderposter extends StatelessWidget{
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Flexible(
-          child: Text(
+
+         Text(
             "${moviedes.Year} .${moviedes.Genre}".toUpperCase(),
             style: TextStyle(
               color: Colors.blue,
             ),
-          ),
-        ),
+          )
+
       ],
     );
 
