@@ -26,7 +26,9 @@ class Extendmoviedetails extends State<Moviedetails>{
     body:ListView(
       children: [
            Moviethumbail("${moviedes.Images[0]}"),
-        MovieDetailsheaderposter(moviedes: moviedes,)
+        MovieDetailsheaderposter(moviedes: moviedes,),
+         SizedBox(height: 10.0,),
+         MovieImageshow(posterimag: moviedes.Images,)
       ],
     )
 
@@ -92,7 +94,8 @@ class Moviethumbail extends StatelessWidget{
           children: [
             Headerposter(movieposter: moviedes.Images[0].toString(),),
             SizedBox(width: 10.0,),
-            Expanded(child:LeftHeaderposter(moviedes: moviedes,))
+            Expanded(child:LeftHeaderposter(moviedes: moviedes,)),
+
 
           ],
         ),
@@ -167,4 +170,41 @@ class LeftHeaderposter extends StatelessWidget{
 
   }
 
+}
+
+//horizontaly show mive scrollview
+
+class MovieImageshow extends StatelessWidget{
+  final List <String> posterimag;
+  const MovieImageshow({super.key, required this.posterimag});
+
+  @override
+  Widget build(BuildContext context) {
+         return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("More Picture"),
+           ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                    itemBuilder: (context,index)=> ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      child: Container(
+                      width: MediaQuery.of(context).size.width /4,
+                      height: 130.0,
+                      decoration: BoxDecoration(
+                      image: DecorationImage(
+                      image:NetworkImage(posterimag[index]),
+                      fit: BoxFit.cover
+                      )
+                      ),
+                      ),
+                      ),
+               separatorBuilder:(context,index)=> SizedBox(width: 6,) ,
+              itemCount: posterimag.length)
+
+
+            ]
+         );
+
+  }
 }
