@@ -184,23 +184,26 @@ class MovieImageshow extends StatelessWidget{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("More Picture"),
-           ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                    itemBuilder: (context,index)=> ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                      child: Container(
-                      width: MediaQuery.of(context).size.width /4,
-                      height: 130.0,
-                      decoration: BoxDecoration(
-                      image: DecorationImage(
-                      image:NetworkImage(posterimag[index]),
-                      fit: BoxFit.cover
-                      )
-                      ),
-                      ),
-                      ),
-               separatorBuilder:(context,index)=> SizedBox(width: 6,) ,
-              itemCount: posterimag.length)
+           SizedBox(
+             height: 150,
+             child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                      itemBuilder: (context,index)=> ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        child: Container(
+                        width: MediaQuery.of(context).size.width /4,
+                        height: 130.0,
+                        decoration: BoxDecoration(
+                        image: DecorationImage(
+                        image:NetworkImage(posterimag[index]),
+                        fit: BoxFit.cover
+                        )
+                        ),
+                        ),
+                        ),
+                 separatorBuilder:(context,index)=> SizedBox(width: 6,) ,
+                itemCount: posterimag.length),
+           )
 
 
             ]
