@@ -31,8 +31,12 @@ var data;
        child: FutureBuilder(
          future: getdata(),
          builder: (context,AsyncSnapshot snapshot){
-                  return Text(snapshot.data[0]['title']);
-                  },
+              if(snapshot.hasData) {
+                return Text(snapshot.data[0]['title']);
+              }
+              return CircularProgressIndicator();
+
+              },
 
        ),
      ),
