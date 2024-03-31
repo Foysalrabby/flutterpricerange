@@ -32,7 +32,7 @@ var data;
          future: getdata(),
          builder: (context,AsyncSnapshot snapshot){
               if(snapshot.hasData) {
-                return Text(snapshot.data[0]['id'].toString());
+                return createlistview(snapshot.data,context);
               }
               return CircularProgressIndicator();
 
@@ -56,6 +56,41 @@ var data;
 
 
   }
+
+
+
+ //end  getdata
+  //start createlistview
+Widget createlistview(data, BuildContext context) {
+
+  return Container(
+    padding: EdgeInsets.all(8.0),
+    child: ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index){
+          return Column(
+             mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Divider(height: 5, color: Colors.grey,),
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.greenAccent,
+                  child: Text("${data[index]["id"]}"),
+                ),
+                title: Text("${data[index]['title']}"),
+                subtitle:Text("${data[index]['body']}") ,
+
+              ),
+            ],
+
+
+          );
+
+        }),
+  );
+
+}
+
 
 }
 class Networkdata{
