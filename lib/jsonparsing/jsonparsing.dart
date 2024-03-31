@@ -32,7 +32,7 @@ var data;
          future: getdata(),
          builder: (context,AsyncSnapshot snapshot){
               if(snapshot.hasData) {
-                return Text(snapshot.data[0]['title']);
+                return Text(snapshot.data[0]['id'].toString());
               }
               return CircularProgressIndicator();
 
