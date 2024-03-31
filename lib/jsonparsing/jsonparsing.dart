@@ -27,6 +27,15 @@ var data;
        title: Text("Json Parsing",),
        backgroundColor:Colors.deepOrangeAccent
      ),
+     body: Center(
+       child: FutureBuilder(
+         future: getdata(),
+         builder: (context,AsyncSnapshot snapshot){
+                  return Text(snapshot.data[0]['title']);
+                  },
+
+       ),
+     ),
    );
   }
   // metthod or function get data
@@ -35,9 +44,9 @@ var data;
     String urls="https://jsonplaceholder.typicode.com/posts";
     Networkdata networkdata= Networkdata(urls);
     data=networkdata.fetchData();
-    data.then((values) {
-     print(values[0]);
-    });
+    // data.then((values) {
+    //  print(values[0]["title"]);
+    // });
 
     return data;
 
