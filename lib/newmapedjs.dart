@@ -34,7 +34,7 @@ class Extendedmappigjson extends State <Mappingjsonparsingdart> {
           List <Jsonparsingpost> allpost;
           if(snapshot.hasData){
             allpost=snapshot.data.posts;
-           return Text("${allpost[0].title}");
+           return customlistview(allpost,context);
           }else{
             return CircularProgressIndicator();
           }
@@ -43,6 +43,31 @@ class Extendedmappigjson extends State <Mappingjsonparsingdart> {
 
     ),
   );
+  }
+
+  Widget customlistview(List<Jsonparsingpost>data,BuildContext context ) {
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: data.length,
+            itemBuilder: (context,index){
+            return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Divider(height: 5.0,),
+              ListTile(
+                leading: CircleAvatar(
+                  child: Text("${data[index].id}"),
+                ),
+                title: Text("${data[index].title}"),
+              )
+            ],
+            );
+        }),
+      ),
+    );
+
   }
 
 }
