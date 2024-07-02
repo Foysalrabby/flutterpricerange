@@ -31,8 +31,10 @@ class Extendedmappigjson extends State <Mappingjsonparsingdart> {
       child: FutureBuilder<Postlist>(
         future: data,
         builder: (context,AsyncSnapshot snapshot){
+          List <Jsonparsingpost> allpost;
           if(snapshot.hasData){
-           return Text("${snapshot.data.posts[0].title}");
+            allpost=snapshot.data.posts;
+           return Text("${allpost[0].title}");
           }else{
             return CircularProgressIndicator();
           }
